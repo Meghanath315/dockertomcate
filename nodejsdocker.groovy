@@ -15,12 +15,13 @@ job('NodeJS Docker exmple') {
         steps {
             dockerBuildAndPublish{
 	        repositoryName('meghanath/nodejs-dsl')
-		tag('${GIT_REVISION, length=9}'}
+		tag('${GIT_REVISION, length=9}')
 		registryCredentials('dockerhub')
 		forcePull(false)
 		forceTag(false)
 		createFingerprints(false)
 		skipDecorate()
                 }
+}
 }
 
