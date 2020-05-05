@@ -1,0 +1,15 @@
+---
+
+ - host: 
+   tasks:
+   - name: docker image
+     raw: docker build -t meghanath/tomcat:1 .
+     #   - name: pulling docker image
+     #     raw: docker pull meghanath/ansthu:1
+   - name: remove containers
+     raw: docker rm -f c1
+     ignore_errors: true
+   - name: spinnup container
+     raw: docker run -dti --name c1 -p 98:80 meghanath/tomcat:1 /bin/bash
+   - name: Start Tomcat
+     service: name=tomcat state=started enabled=yes

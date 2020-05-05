@@ -1,0 +1,19 @@
+job('Tomcat') {
+    scm {
+             git('git://github.com/Meghanath315/tomcate.git') { node -> 
+                 node / gitConfigName('meghanath315')
+                 node / gitConfigEmail('1804megh@gmail.com')
+                 }
+        }
+        triggers {
+        scm('H/5 * * * *')
+    }
+//        wrappers {
+//       maven('maven') // this is the namme of NodeJS installation in
+                        // Manage Jenkins -> NodeJS Installations -> Name
+//        }
+        steps {
+            shell("./test-tom.yml")
+                }
+}
+
